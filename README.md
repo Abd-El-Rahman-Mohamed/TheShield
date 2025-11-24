@@ -28,11 +28,7 @@ At The Shield, we translate expertise into trust. Our goal is to deliver innovat
 
 ## Tech Stack
 
-- **Frontend**: HTML5, CSS3, JavaScript (with frameworks like React.js or vanilla JS – specify based on implementation).
-- **Backend**: Node.js/Express (if dynamic features are included) or static site generator like Jekyll/Hugo.
-- **Deployment**: Hosted on platforms like GitHub Pages, Vercel, or Netlify.
-- **Other Tools**: Bootstrap for styling, Font Awesome for icons, and potential integrations with Facebook APIs for live feeds.
+- **Frontend**: HTML5, CSS3, JavaScript.
+- **Deployment**: Hosted on platforms like GitHub Pages.
+- **Other Tools**: Font Awesome for icons and Google Fonts for Fonts.
 
-## Installation and Setup
-
-1. **Clone the Repository**:
