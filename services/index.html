@@ -18,16 +18,11 @@
                     <a href="../index.html" class="logo">
                         <img src="../assets/img/logo.png" alt="The Shield Logo">
                     </a>
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                            <i class="fas fa-moon"></i>
-                        </button>
-                        <button class="menu-toggle" aria-label="Toggle menu">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </button>
-                    </div>
+                    <button class="menu-toggle" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                     <ul class="nav-menu">
                         <li><a href="../index.html">الرئيسية</a></li>
                         <li><a href="index.html" class="active">خدماتنا</a></li>
@@ -51,7 +46,7 @@
     <section class="services-detail">
         <div class="container">
             <!-- Surveillance Cameras -->
-            <div class="service-detail-card">
+            <div id="surveillance-cameras" class="service-detail-card">
                 <div class="service-detail-icon">
                     <i class="fas fa-video"></i>
                 </div>
@@ -82,7 +77,7 @@
             </div>
 
             <!-- Networks -->
-            <div class="service-detail-card">
+            <div id="networks" class="service-detail-card">
                 <div class="service-detail-icon">
                     <i class="fas fa-network-wired"></i>
                 </div>
@@ -113,7 +108,7 @@
             </div>
 
             <!-- Electrical & Lighting -->
-            <div class="service-detail-card">
+            <div id="electrical-and-lighting" class="service-detail-card">
                 <div class="service-detail-icon">
                     <i class="fas fa-bolt"></i>
                 </div>
@@ -144,7 +139,7 @@
             </div>
 
             <!-- Fire Alarm Systems -->
-            <div class="service-detail-card">
+            <div id="fire-alarm-systems" class="service-detail-card">
                 <div class="service-detail-icon">
                     <i class="fas fa-fire-extinguisher"></i>
                 </div>
@@ -174,7 +169,7 @@
             </div>
 
             <!-- LED Screens -->
-            <div class="service-detail-card">
+            <div id="led-screens" class="service-detail-card">
                 <div class="service-detail-icon">
                     <i class="fas fa-tv"></i>
                 </div>
@@ -203,7 +198,7 @@
             </div>
 
             <!-- Smart Home -->
-            <div class="service-detail-card">
+            <div id="smart-home" class="service-detail-card">
                 <div class="service-detail-icon">
                     <i class="fas fa-home"></i>
                 </div>
@@ -232,7 +227,7 @@
             </div>
 
             <!-- Satellite Systems -->
-            <div class="service-detail-card">
+            <div id="satellite-systems" class="service-detail-card">
                 <div class="service-detail-icon">
                     <i class="fas fa-satellite-dish"></i>
                 </div>
@@ -262,7 +257,7 @@
             </div>
 
             <!-- Sound Systems -->
-            <div class="service-detail-card">
+            <div id="sound-systems" class="service-detail-card">
                 <div class="service-detail-icon">
                     <i class="fas fa-volume-up"></i>
                 </div>
@@ -291,7 +286,7 @@
             </div>
 
             <!-- Queue Management -->
-            <div class="service-detail-card">
+            <div id="queue-management" class="service-detail-card">
                 <div class="service-detail-icon">
                     <i class="fas fa-users"></i>
                 </div>
@@ -320,11 +315,11 @@
     <section class="cta">
         <div class="container">
             <div class="cta-content">
-                <h2>هل تحتاج إلى استشارة مجانية؟</h2>
+                <h2>هل تحتاج إلى مساعدة؟</h2>
                 <p>تواصل معنا الآن وسنساعدك في اختيار الحل الأمثل لاحتياجاتك</p>
                 <div class="cta-buttons">
-                    <a href="tel:0915564024" class="btn btn-light">
-                        <i class="fas fa-phone"></i> 0915564024
+                    <a href="tel:915564024" class="btn btn-light">
+                        <i class="fas fa-phone"></i> 915564024
                     </a>
                     <a href="../contact/index.html" class="btn btn-outline">أرسل رسالة</a>
                 </div>
@@ -367,13 +362,18 @@
                     <h3>تواصل معنا</h3>
                     <ul class="contact-info">
                         <li><i class="fas fa-map-marker-alt"></i> بنغازي، ليبيا</li>
-                        <li><i class="fas fa-phone"></i> 0915564024</li>
-                        <li><i class="fas fa-envelope"></i> info@theshield.ly</li>
+                        <li><i class="fas fa-phone"></i> 915564024</li>
+                        <li><i class="fas fa-envelope"></i>madysaleh26@gmail.com</li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 الدرع - جميع الحقوق محفوظة</p>
+                <div style="display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap;">
+                    <p style="margin: 0;">&copy; 2024 الدرع - جميع الحقوق محفوظة</p>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </footer>

@@ -155,7 +155,6 @@ body {
     justify-content: center;
     font-size: 1.2rem;
     transition: var(--transition);
-    margin-right: 15px;
 }
 
 .theme-toggle:hover {
@@ -166,6 +165,10 @@ body {
 
 .theme-toggle i {
     transition: var(--transition);
+}
+
+.footer-bottom .theme-toggle {
+    flex-shrink: 0;
 }
 
 /* Hero Section */
@@ -535,10 +538,16 @@ section {
 
 /* Footer */
 .footer {
-    background: var(--dark-color);
-    color: var(--white);
+    background: #f5f5f5;
+    color: #1F2223;
     padding: 60px 0 20px;
     position: relative;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] .footer {
+    background: #1F2223;
+    color: #ffffff;
 }
 
 .footer::before {
@@ -572,13 +581,17 @@ section {
 }
 
 .footer-section a {
-    color: rgba(255,255,255,0.8);
+    color: rgba(31, 34, 35, 0.7);
     text-decoration: none;
     transition: var(--transition);
 }
 
+[data-theme="dark"] .footer-section a {
+    color: rgba(255, 255, 255, 0.8);
+}
+
 .footer-section a:hover {
-    color: var(--accent-color);
+    color: var(--primary-color);
 }
 
 .social-links {
@@ -590,7 +603,7 @@ section {
 .social-links a {
     width: 40px;
     height: 40px;
-    background: rgba(255,255,255,0.1);
+    background: rgba(31, 34, 35, 0.1);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -598,8 +611,13 @@ section {
     transition: var(--transition);
 }
 
+[data-theme="dark"] .social-links a {
+    background: rgba(255, 255, 255, 0.1);
+}
+
 .social-links a:hover {
     background: var(--primary-color);
+    color: #ffffff;
     transform: translateY(-3px);
     box-shadow: 0 4px 12px rgba(130, 38, 191, 0.4);
 }
@@ -617,8 +635,13 @@ section {
 .footer-bottom {
     text-align: center;
     padding-top: 30px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    color: rgba(255,255,255,0.6);
+    border-top: 1px solid rgba(31, 34, 35, 0.1);
+    color: rgba(31, 34, 35, 0.6);
+}
+
+[data-theme="dark"] .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
 }
 
 /* Utilities */
@@ -648,11 +671,6 @@ section {
         width: 35px;
         height: 35px;
         font-size: 1rem;
-        margin-right: 10px;
-    }
-    
-    .nav-wrapper > div {
-        order: 2;
     }
 
     .nav-menu {
@@ -1255,14 +1273,4 @@ select:focus {
     color: #c9a0e8;
 }
 
-[data-theme="dark"] .footer-section a {
-    color: rgba(255, 255, 255, 0.9);
-}
 
-[data-theme="dark"] .footer-section a:hover {
-    color: #c9a0e8;
-}
-
-[data-theme="dark"] .footer-bottom {
-    color: rgba(255, 255, 255, 0.7);
-}
