@@ -23,7 +23,7 @@ At The Shield, we translate expertise into trust. Our goal is to deliver innovat
 - **Responsive Design**: Built with modern web technologies for seamless viewing on desktops, tablets, and mobiles.
 - **Service Pages**: Dedicated sections for each service with descriptions, case studies, and contact forms.
 - **Project Gallery**: Highlights of past work, including videos and images from events like the Alam Al Jibal pavilion at Libya Build.
-- **Contact Integration**: Easy ways to reach us via messaging or phone (915564024).
+- **Contact Integration**: Easy ways to reach us via messaging or phone (0915564024).
 - **Multilingual Support**: Content in Arabic and English to cater to our diverse audience.
 
 ## Tech Stack
