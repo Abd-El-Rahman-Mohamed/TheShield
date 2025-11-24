@@ -63,10 +63,12 @@ const header = document.querySelector('.header');
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     
-    if (currentScroll > 100) {
-        header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+    if (currentScroll > 50) {
+        header.classList.add('scrolled');
+        header.style.boxShadow = '0 4px 20px rgba(130, 38, 191, 0.15)';
     } else {
-        header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+        header.classList.remove('scrolled');
+        header.style.boxShadow = '0 2px 10px rgba(130, 38, 191, 0.1)';
     }
     
     lastScroll = currentScroll;

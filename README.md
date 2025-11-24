@@ -28,7 +28,22 @@ At The Shield, we translate expertise into trust. Our goal is to deliver innovat
 
 ## Tech Stack
 
-- **Frontend**: HTML5, CSS3, JavaScript.
-- **Deployment**: Hosted on platforms like GitHub Pages.
-- **Other Tools**: Font Awesome for icons and Google Fonts for Fonts.
+- **Frontend**: HTML5, CSS3, JavaScript
+- **Font**: Roboto (Variable Font)
+- **Icons**: Font Awesome 6.4.0
+- **Deployment**: Hosted on platforms like GitHub Pages
+
+## Design System
+
+### Color Palette
+- **Primary Color**: `#8226BF` - Purple (main brand color)
+- **Secondary Color**: `#020659` - Deep Blue
+- **Accent Color**: `#434573` - Slate Blue
+- **Dark Color**: `#1F2223` - Almost Black
+- **Medium Dark**: `#303436` - Dark Gray
+
+### Typography
+- **Font Family**: Roboto Variable Font
+- **Weights**: 100-900 (Variable)
+- **Styles**: Normal and Italic
 
