@@ -9,8 +9,146 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <style>
+        /* Popup Modal Styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-modal {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: scale(0.7) translateY(-50px);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            text-align: center;
+        }
+
+        .popup-overlay.active .popup-modal {
+            transform: scale(1) translateY(0);
+        }
+
+        .popup-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            animation: scaleIn 0.5s ease 0.2s both;
+        }
+
+        .popup-icon.success {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+        }
+
+        .popup-icon.error {
+            background: linear-gradient(135deg, #f44336, #d32f2f);
+            color: white;
+        }
+
+        .popup-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            animation: fadeInUp 0.5s ease 0.3s both;
+        }
+
+        .popup-message {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.5s ease 0.4s both;
+        }
+
+        [data-theme="dark"] .popup-message {
+            color: #b0b0b0;
+        }
+
+        .popup-close-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.5s ease 0.5s both;
+        }
+
+        .popup-close-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(130, 38, 191, 0.4);
+        }
+
+        .popup-close-btn:active {
+            transform: translateY(0);
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0) rotate(-180deg);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1) rotate(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Popup Modal -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-modal">
+            <div class="popup-icon" id="popupIcon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3 class="popup-title" id="popupTitle">عنوان الرسالة</h3>
+            <p class="popup-message" id="popupMessage">نص الرسالة هنا</p>
+            <button class="popup-close-btn" id="popupCloseBtn">حسناً</button>
+        </div>
+    </div>
     <!-- Header -->
     <header class="header">
         <nav class="navbar">
@@ -242,6 +380,52 @@
             emailjs.init('0VI1tnuIqRUl-rAlM'); // Replace with your EmailJS public key
         })();
 
+        // Popup Functions
+        function showPopup(type, title, message) {
+            const overlay = document.getElementById('popupOverlay');
+            const icon = document.getElementById('popupIcon');
+            const titleEl = document.getElementById('popupTitle');
+            const messageEl = document.getElementById('popupMessage');
+            
+            // Set content
+            titleEl.textContent = title;
+            messageEl.textContent = message;
+            
+            // Set icon based on type
+            if (type === 'success') {
+                icon.className = 'popup-icon success';
+                icon.innerHTML = '<i class="fas fa-check"></i>';
+            } else {
+                icon.className = 'popup-icon error';
+                icon.innerHTML = '<i class="fas fa-times"></i>';
+            }
+            
+            // Show popup
+            overlay.classList.add('active');
+        }
+
+        function closePopup() {
+            const overlay = document.getElementById('popupOverlay');
+            overlay.classList.remove('active');
+        }
+
+        // Close popup on button click
+        document.getElementById('popupCloseBtn').addEventListener('click', closePopup);
+
+        // Close popup on overlay click
+        document.getElementById('popupOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePopup();
+            }
+        });
+
+        // Close popup on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closePopup();
+            }
+        });
+
         // Contact Form Handler
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -257,11 +441,11 @@
             emailjs.sendForm('service_kd7hwi4', 'template_plnvrf1', this)
                 .then(function() {
                     // Success
-                    alert('✅ شكراً لتواصلك معنا! سنقوم بالرد عليك في أقرب وقت ممكن.');
+                    showPopup('success', 'تم الإرسال بنجاح!', 'شكراً لتواصلك معنا! سنقوم بالرد عليك في أقرب وقت ممكن.');
                     document.getElementById('contactForm').reset();
                 }, function(error) {
                     // Error
-                    alert('❌ عذراً، حدث خطأ في الإرسال. يرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة.');
+                    showPopup('error', 'حدث خطأ!', 'عذراً، حدث خطأ في الإرسال. يرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة.');
                     console.error('EmailJS Error:', error);
                 })
                 .finally(function() {
