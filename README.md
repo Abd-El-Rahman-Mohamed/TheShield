@@ -1,6 +1,6 @@
 # The Shield LY Website
 
-![The Shield LY Logo](path/to/logo.png) <!-- Replace with actual logo path if available -->
+![The Shield LY Logo](https://i.ibb.co/dwRTCW4g/logo.png) <!-- Replace with actual logo path if available -->
 
 ## Overview
 

@@ -143,3 +143,26 @@ const statsObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.stat-item').forEach(stat => {
     statsObserver.observe(stat);
 });
+
+// Our Partners Card Touch Handling for Mobile
+const partnerCards = document.querySelectorAll('.partners-carousel > article');
+
+if (partnerCards.length > 0) {
+    // Add active class on touch
+    partnerCards.forEach(card => {
+        card.addEventListener('touchstart', (e) => {
+            // Remove active class from all cards
+            partnerCards.forEach(c => c.classList.remove('touch-active'));
+            // Add active class to touched card
+            card.classList.add('touch-active');
+        });
+    });
+
+    // Remove active class when touching outside
+    document.addEventListener('touchstart', (e) => {
+        const isPartnerCard = e.target.closest('.partners-carousel > article');
+        if (!isPartnerCard) {
+            partnerCards.forEach(card => card.classList.remove('touch-active'));
+        }
+    });
+}

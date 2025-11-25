@@ -1556,13 +1556,15 @@ select:focus {
 .partners-carousel > article:nth-child(5) { --i: 4; }
 .partners-carousel > article:nth-child(6) { --i: 5; }
 
-.partners-carousel > article:hover {
+.partners-carousel > article:hover,
+.partners-carousel > article.touch-active {
     border-color: transparent;
     box-shadow: 0 10px 40px rgba(130, 38, 191, 0.3);
     animation-play-state: paused;
 }
 
-.partners-carousel > article:hover::before {
+.partners-carousel > article:hover::before,
+.partners-carousel > article.touch-active::before {
     opacity: 1;
 }
 
@@ -1575,7 +1577,8 @@ select:focus {
     transition: filter 0.3s ease, opacity 0.3s ease;
 }
 
-.partners-carousel > article:hover img {
+.partners-carousel > article:hover img,
+.partners-carousel > article.touch-active img {
     filter: grayscale(0%);
     opacity: 1;
 }
