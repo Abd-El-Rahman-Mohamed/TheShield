@@ -8,6 +8,7 @@
     <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
     <!-- Header -->
@@ -101,10 +102,10 @@
                 <!-- Contact Form -->
                 <div class="contact-form-section">
                     <h2>أرسل لنا رسالة</h2>
-                    <form id="contactForm" class="contact-form" action="https://usebasin.com/f/04541a02813d" method="POST">
+                    <form id="contactForm" class="contact-form">
                         <div class="form-group">
                             <label for="name">الاسم الكامل *</label>
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="from_name" required>
                         </div>
 
                         <div class="form-group">
@@ -114,7 +115,7 @@
 
                         <div class="form-group">
                             <label for="email">البريد الإلكتروني</label>
-                            <input type="email" id="email" name="email">
+                            <input type="email" id="email" name="reply_to" placeholder="اختياري">
                         </div>
 
                         <div class="form-group">
@@ -138,8 +139,9 @@
                             <textarea id="message" name="message" required></textarea>
                         </div>
 
-                        <button type="submit" class="submit-btn">
-                            <i class="fas fa-paper-plane"></i> إرسال الرسالة
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>إرسال الرسالة</span>
                         </button>
                     </form>
                 </div>
@@ -224,5 +226,40 @@
 
     <script src="../assets/js/translations.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script>
+        // Initialize EmailJS
+        (function() {
+            emailjs.init('0VI1tnuIqRUl-rAlM'); // Replace with your EmailJS public key
+        })();
+
+        // Contact Form Handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.innerHTML;
+            
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
+            
+            // Send email using EmailJS
+            emailjs.sendForm('service_kd7hwi4', 'template_plnvrf1', this)
+                .then(function() {
+                    // Success
+                    alert('✅ شكراً لتواصلك معنا! سنقوم بالرد عليك في أقرب وقت ممكن.');
+                    document.getElementById('contactForm').reset();
+                }, function(error) {
+                    // Error
+                    alert('❌ عذراً، حدث خطأ في الإرسال. يرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة.');
+                    console.error('EmailJS Error:', error);
+                })
+                .finally(function() {
+                    // Re-enable button
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                });
+        });
+    </script>
 </body>
 </html>
