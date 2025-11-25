@@ -1488,9 +1488,10 @@ select:focus {
 
     position: relative;
     width: var(--carousel-width);
-    height: var(--carousel-item-height);
+    height: calc(var(--carousel-item-height) + 40px);
     overflow: clip;
     margin-top: 40px;
+    padding: 20px 0;
 }
 
 .partners-carousel[mask] {
@@ -1508,7 +1509,7 @@ select:focus {
 
 .partners-carousel > article {
     position: absolute;
-    top: 0;
+    top: 20px;
     left: calc(100% + var(--carousel-item-gap));
     width: var(--carousel-item-width);
     height: var(--carousel-item-height);
@@ -1518,9 +1519,9 @@ select:focus {
     padding: 20px;
     border-radius: 10px;
     background: var(--card-bg);
-    border: 1px solid rgba(130, 38, 191, 0.1);
+    border: 2px solid rgba(130, 38, 191, 0.1);
     box-shadow: var(--shadow);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
 
     will-change: transform;
     animation-name: partnersMarquee;
@@ -1532,6 +1533,17 @@ select:focus {
     );
 }
 
+.partners-carousel > article::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
 .partners-carousel > article:nth-child(1) { --i: 0; }
 .partners-carousel > article:nth-child(2) { --i: 1; }
 .partners-carousel > article:nth-child(3) { --i: 2; }
@@ -1540,9 +1552,13 @@ select:focus {
 .partners-carousel > article:nth-child(6) { --i: 5; }
 
 .partners-carousel > article:hover {
-    border-color: var(--primary-color);
-    box-shadow: var(--shadow-hover);
-    transform: scale(1.05);
+    border-color: transparent;
+    box-shadow: 0 10px 40px rgba(130, 38, 191, 0.3);
+    animation-play-state: paused;
+}
+
+.partners-carousel > article:hover::before {
+    opacity: 1;
 }
 
 .partners-carousel img {
