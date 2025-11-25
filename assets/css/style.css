@@ -1468,3 +1468,112 @@ select:focus {
 [lang="en"] .logo-text {
     font-family: 'Montserrat', sans-serif;
 }
+
+
+/* Our Partners Section */
+.our-partners {
+    background: var(--bg-color);
+    padding: 80px 0;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+
+.partners-carousel {
+    --items: 6;
+    --carousel-duration: 30s;
+    --carousel-width: 100%;
+    --carousel-item-width: 200px;
+    --carousel-item-height: 120px;
+    --carousel-item-gap: 3rem;
+
+    position: relative;
+    width: var(--carousel-width);
+    height: var(--carousel-item-height);
+    overflow: clip;
+    margin-top: 40px;
+}
+
+.partners-carousel[mask] {
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 10% 90%,
+        transparent
+    );
+}
+
+.partners-carousel:hover > article {
+    animation-play-state: paused;
+}
+
+.partners-carousel > article {
+    position: absolute;
+    top: 0;
+    left: calc(100% + var(--carousel-item-gap));
+    width: var(--carousel-item-width);
+    height: var(--carousel-item-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 10px;
+    background: var(--card-bg);
+    border: 1px solid rgba(130, 38, 191, 0.1);
+    box-shadow: var(--shadow);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+
+    will-change: transform;
+    animation-name: partnersMarquee;
+    animation-duration: var(--carousel-duration);
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-delay: calc(
+        var(--carousel-duration) / var(--items) * 1 * var(--i) * -1
+    );
+}
+
+.partners-carousel > article:nth-child(1) { --i: 0; }
+.partners-carousel > article:nth-child(2) { --i: 1; }
+.partners-carousel > article:nth-child(3) { --i: 2; }
+.partners-carousel > article:nth-child(4) { --i: 3; }
+.partners-carousel > article:nth-child(5) { --i: 4; }
+.partners-carousel > article:nth-child(6) { --i: 5; }
+
+.partners-carousel > article:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-hover);
+    transform: scale(1.05);
+}
+
+.partners-carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.partners-carousel > article:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+@keyframes partnersMarquee {
+    100% {
+        transform: translateX(
+            calc(
+                (var(--items) * (var(--carousel-item-width) + var(--carousel-item-gap))) * -1
+            )
+        );
+    }
+}
+
+/* Responsive adjustments for partners carousel */
+@media (max-width: 768px) {
+    .partners-carousel {
+        --carousel-item-width: 150px;
+        --carousel-item-height: 100px;
+        --carousel-item-gap: 2rem;
+    }
+}
