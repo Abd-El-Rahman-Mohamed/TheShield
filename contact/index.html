@@ -101,7 +101,7 @@
                 <!-- Contact Form -->
                 <div class="contact-form-section">
                     <h2>أرسل لنا رسالة</h2>
-                    <form id="contactForm" class="contact-form">
+                    <form id="contactForm" class="contact-form" action="https://usebasin.com/f/04541a02813d" method="POST">
                         <div class="form-group">
                             <label for="name">الاسم الكامل *</label>
                             <input type="text" id="name" name="name" required>
@@ -121,15 +121,15 @@
                             <label for="service">الخدمة المطلوبة</label>
                             <select id="service" name="service">
                                 <option value="">اختر الخدمة</option>
-                                <option value="cameras">كاميرات المراقبة</option>
-                                <option value="networks">الشبكات</option>
-                                <option value="electrical">الكهرباء والإضاءة</option>
-                                <option value="alarm">أنظمة الإنذار</option>
-                                <option value="led">الشاشات العملاقة</option>
-                                <option value="smarthome">Smart Home</option>
-                                <option value="satellite">منظومات الستالايت</option>
-                                <option value="sound">منظومات الصوت</option>
-                                <option value="other">أخرى</option>
+                                <option value="كاميرات المراقبة">كاميرات المراقبة</option>
+                                <option value="الشبكات">الشبكات</option>
+                                <option value="الكهرباء والإضاءة">الكهرباء والإضاءة</option>
+                                <option value="أنظمة الإنذار">أنظمة الإنذار</option>
+                                <option value="الشاشات العملاقة">الشاشات العملاقة</option>
+                                <option value="Smart Home">Smart Home</option>
+                                <option value="منظومات الستالايت">منظومات الستالايت</option>
+                                <option value="منظومات الصوت">منظومات الصوت</option>
+                                <option value="أخرى">أخرى</option>
                             </select>
                         </div>
 
@@ -224,27 +224,5 @@
 
     <script src="../assets/js/translations.js"></script>
     <script src="../assets/js/main.js"></script>
-    <script>
-        // Contact Form Handler
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = {
-                name: document.getElementById('name').value,
-                phone: document.getElementById('phone').value,
-                email: document.getElementById('email').value,
-                service: document.getElementById('service').value,
-                message: document.getElementById('message').value
-            };
-            
-            // Here you would typically send the data to a server
-            // For now, we'll just show an alert
-            alert('شكراً لتواصلك معنا! سنقوم بالرد عليك في أقرب وقت ممكن.');
-            
-            // Reset form
-            this.reset();
-        });
-    </script>
 </body>
 </html>
